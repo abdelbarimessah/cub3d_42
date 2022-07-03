@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 22:30:28 by amessah           #+#    #+#             */
-/*   Updated: 2022/07/03 01:42:35 by amessah          ###   ########.fr       */
+/*   Updated: 2022/07/03 03:45:58 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int		mouvement(int key, void *param);
 int		position_j(char **str);
 int		position_i(char **str);
 void	draw_player(t_map *map);
-
+int draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color);
 
 #endif

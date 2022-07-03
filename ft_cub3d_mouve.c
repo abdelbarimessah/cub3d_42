@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 01:23:40 by amessah           #+#    #+#             */
-/*   Updated: 2022/07/02 02:36:37 by amessah          ###   ########.fr       */
+/*   Updated: 2022/07/03 04:04:56 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	w_mouve(t_map *map)
 {
+	draw_line(map->mlx, map->win, map->px + 3, map->py + 3, 150, 150, 0x00ff0000);
 	map->py -= 20;
 	// map_to_win(map);
 	
@@ -22,6 +23,7 @@ int	w_mouve(t_map *map)
 
 int	s_mouve(t_map *map)
 {
+	draw_line(map->mlx, map->win, map->px + 3, map->py + 3, 150, 150, 0x00ff0000);
 	map->py += 20;
 	// map_to_win(map);
 	return (1);
@@ -29,6 +31,7 @@ int	s_mouve(t_map *map)
 
 int	a_mouve(t_map *map)
 {
+	draw_line(map->mlx, map->win, map->px + 3, map->py + 3, 150, 150, 0x00ff0000);
 	map->px -= 20;
 	// map_to_win(map);
 	return (1);
@@ -36,6 +39,7 @@ int	a_mouve(t_map *map)
 
 int	d_mouve(t_map *map)
 {
+	draw_line(map->mlx, map->win, map->px + 3, map->py + 3, 150, 150, 0x00ff0000);
 	map->px += 20;
 	// map_to_win(map);
 	return (1);
@@ -64,7 +68,6 @@ void	key_left_m(t_map *map)
 int	mouvement(int key, void *param)
 {
 	t_map	*map;
-
 
 	map = (t_map *)param;
 	mlx_clear_window(map->mlx, map->win);
