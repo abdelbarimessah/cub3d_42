@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:53:11 by amessah           #+#    #+#             */
-/*   Updated: 2022/07/03 03:51:32 by amessah          ###   ########.fr       */
+/*   Updated: 2023/04/24 21:27:24 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,42 @@ void	draw_player(t_map *map)
 	int i = 0;
 	int j = 0;
 	
-	map->img_ptr = mlx_new_image(map->mlx, 17, 17);
-	map->img_addr = mlx_get_data_addr(map->img_ptr, &map->bits_per_pixel, &map->size_line, &map->endian);
+	map->img_ptr = mlx_new_image(map->mlx, 10, 10);
+	// map->img_addr = mlx_get_data_addr(map->img_ptr, &map->bits_per_pixel, &map->size_line, &map->endian);
 	while (i < 20)
 	{
 		j = 0;
 		while (j < 20)
 		{
-			my_mlx_pixel_put(map, i, j, 0x00ff0000);
+			// my_mlx_pixel_put(map, i, j, 0x00ff0000);
+			draw_line(map->mlx,map->win, 640,360, 0, 0,0xFFFFFF);
 			j++;
+		}
+		i++;
+	}
+}
+
+void draw_player1(t_map *map)
+{
+	int i = 0;
+	int j = 0;
+	while(map->str[i])
+	{
+		j = 0;
+		while(map->str[i][j])
+		{
+			if(map->str[i][j] == 'P')
+			{
+				// mlx_put_image_to_window(map->mlx, map->win, map->wall,
+				// 						j * map->img_w, i * map->img_h);
+				// map->img_ptr = mlx_new_image(map->mlx, 10,10 );
+
+				// mlx_pixel_put(map->mlx, map->win, i, j, 0x000000);
+				map->px = (i * map->img_h);
+				map->py = (j * map->img_w);
+				map->var = PI / 2;
+			}
+			j++;	
 		}
 		i++;
 	}
@@ -59,7 +86,10 @@ void    map_to_win(t_map *map)
 	{
 		j = -1;
 		while(map->str[i][++j])
+		{
 			draw(map, i, j);
+			
+		}
 	}
 }
 
@@ -96,9 +126,8 @@ void    cub3d_game(t_map *map)
 {
 	xpm_to_image(map);
 	map_to_win(map);
-	draw_player(map);
+	draw_player1(map);
 	mlx_hook(map->win, 2, 1L << 2, mouvement, map);
-	// mlx_pixel_put(map->mlx, map->win, 200 ,100, 0x00ff0000);
-	mlx_put_image_to_window(map->mlx, map->win, map->img_ptr, map->px, map->py);
+	map->img_ptr = mlx_new_image(map->mlx, 17,17 );
 	mlx_loop(map->mlx);
 }

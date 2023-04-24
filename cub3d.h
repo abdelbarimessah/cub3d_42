@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 22:30:28 by amessah           #+#    #+#             */
-/*   Updated: 2022/07/03 03:45:58 by amessah          ###   ########.fr       */
+/*   Updated: 2023/04/23 21:19:57 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ typedef struct map
 	int		py;
 	int		pdx;
 	int		pdy;
-	int		pa;
+	int pa;
+	int	pb;
+	double	var;
 	void	*img_ptr;
 	int		bits_per_pixel;
 	int		size_line;
@@ -76,6 +78,7 @@ int		mouvement(int key, void *param);
 int		position_j(char **str);
 int		position_i(char **str);
 void	draw_player(t_map *map);
+void	draw_player1(t_map *map);
 int draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color);
 
 #endif
