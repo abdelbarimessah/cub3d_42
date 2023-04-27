@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 22:30:28 by amessah           #+#    #+#             */
-/*   Updated: 2023/04/23 21:19:57 by amessah          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:06:24 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@
 # define KEY_RIGHT 124
 # define KEY_LEFT 123
 #define PI 3.141592
+# define C2 0xC34A6A
+# define C1 0x7AE2B3
+# define WHITE 0xffffff
+# define BLACK 0x000000
+# define AQUA 0x00bda5
+# define AQUA1 0x007667
+# define GRAY 0x808080
+# define GRAY1 0x302D2C
+# define GRAY2 0xa4a4a5
 
 # define WALL "./image/wall.xpm"
 # define EMPTY "./image/empty.xpm"
@@ -57,8 +66,9 @@ typedef struct map
 	void	*img_ptr;
 	int		bits_per_pixel;
 	int		size_line;
+	int 	number_line;
 	int		endian;
-	char	*img_addr;
+	int	*img_addr;
 }t_map;
 
 
@@ -73,7 +83,7 @@ int		check_file_name(char *str);
 char	**map_read(int fd);
 char	*reader(int fd);
 void    cub3d_game(t_map *map);
-void    map_to_win(t_map *map);
+int    map_to_win(t_map *map);
 int		mouvement(int key, void *param);
 int		position_j(char **str);
 int		position_i(char **str);

@@ -6,7 +6,7 @@
 #    By: amessah <amessah@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/29 22:33:29 by amessah           #+#    #+#              #
-#    Updated: 2022/06/30 01:45:50 by amessah          ###   ########.fr        #
+#    Updated: 2023/04/26 18:16:54 by amessah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = cub3d
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Ofast
 
 INCLUDE = cub3d.h
 

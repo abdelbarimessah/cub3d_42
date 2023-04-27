@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:25:31 by amessah           #+#    #+#             */
-/*   Updated: 2022/07/02 02:22:28 by amessah          ###   ########.fr       */
+/*   Updated: 2023/04/25 10:40:31 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ char	**map_read(int fd)
 		i++;
 	}
 	map_line = ft_split(map, '\n');
+	
 	// free(map);
 	return (map_line);
 }

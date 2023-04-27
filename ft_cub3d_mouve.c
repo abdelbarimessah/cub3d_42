@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 01:23:40 by amessah           #+#    #+#             */
-/*   Updated: 2023/04/24 21:26:02 by amessah          ###   ########.fr       */
+/*   Updated: 2023/04/26 21:29:15 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	key_left_m(t_map *map)
 	// map->pb += 10;
 	// printf("%d\n", map->pa);
 	map->var -= 0.1;
-	
-
  }
 
 int	mouvement(int key, void *param)
@@ -109,52 +107,21 @@ int	mouvement(int key, void *param)
 
 	// draw_line(map->mlx,map->win, map->px + 7, map->py + 7, z, w, 0xFFFFFF);
 
+	mlx_put_image_to_window(map->mlx, map->win, map->img_ptr, 0 , 0);
+
+	float distance = 600 / sin(PI /  3);
+	 
 	double k = 0;
-	while( k <= 1.2)
+	while( k <= (PI / 3))
 	{
-		int x = map->px + 200 * cos(map->var + k);
-		int y = map->py + 200 * sin(map->var + k);
-		draw_line(map->mlx,map->win, map->px + 7, map->py + 7, x,y, 0xFFFFFF);
-		k += 0.01;
+		int x = map->px + 600 * cos(map->var + k);
+		int y = map->py + 600 * sin(map->var + k);
+		draw_line(map->mlx,map->win, map->px  + 3, map->py , x,y, 0xFF0000);
+		k += 0.005;
 	}
-	// map->pa = (map->px * cos(map->var))  - (map->py * sin(map->var));
-	// map->pb = (map->px * sin(map->var))  + (map->py * cos(map->var));
-	// map->var = PI / 2;
-	
-	// int x = map->px + cos(map->var) * 180;
-	// int y = map->py * sin(map->var) * 180 ;
+	// map->img_ptr = mlx_new_image(map->mlx, 1,1 );
 
-	// printf(" map->var %lf\n", map->var);
-	// int x = (cos(map->var ) * abs(map->px) ) - (sin(map->var ) * abs(map->py) );
-	// int y = (sin(map->var ) * abs(map->px) ) + (cos(map->var) * abs(map->py) );
-	// printf("%d %d %lf\n", x, y, map->var);
-
-	// map->pa = ((cos(map->var) + sin(map->var)) * ( map->px - map->pa)) + map->px;
-	// map->pb = ((cos(map->var) + sin(map->var)) * ( map->py - map->pb)) + map->py;
 	
-	// map->pa = ((map->pa - map->px) * cos(map->var) ) - ((map->pb - map->py) * sin(map->var)) + map->px;
-	// map->pb = ((map->pa - map->px) * sin(map->var) ) + ((map->pb - map->py) * cos(map->var)) + map->py;
-	// int i = 0;
-	// while(i < 100)
-	// {
-	// 	draw_line(map->mlx, map->win, map->px + 7, map->py + 7, map->pa + i, map->pb, 0x000000);
-	// 	i += 10;
-	// }
-	// draw_line(map->mlx,map->win, map->px + 7, map->py + 7, map->pa+ 60, map->pb + 60, 0xFFFFFF);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 200, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 300, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 400, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 500, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 600, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 700, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 800, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 900, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 1000, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 1100, map->pb, 0x000000);
-	// draw_line(map->mlx, map->win, map->px + 7, map->py, map->pa + 1200, map->pb, 0x000000);
-	
-	// draw_line(map->mlx, map->win, map->px, map->py, -200, -100, 0x000000);
-	mlx_put_image_to_window(map->mlx, map->win, map->img_ptr, map->px, map->py);
-	// draw_line(map->mlx, map->win, map->px, map->py, map->pa * 100, map->pb * 100, 0x000000);
+	// mlx_put_image_to_window(map->mlx, map->win, map->img_ptr, map->px, map->py);
  	return (1);
 }
