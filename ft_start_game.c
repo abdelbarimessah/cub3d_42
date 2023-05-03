@@ -6,18 +6,18 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:53:11 by amessah           #+#    #+#             */
-/*   Updated: 2023/04/27 16:46:14 by amessah          ###   ########.fr       */
+/*   Updated: 2023/04/28 13:13:32 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	my_mlx_pixel_put(t_map *data, int x, int y, int color)
-// {
-// 	char	*dst;
-// 	dst = data->img_addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
-// 	*(unsigned int*)dst = color;
-// }
+void	my_mlx_pixel_put(t_map *data, int x, int y, int color)
+{
+	char	*dst;
+	dst =(char *) data->img_addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 void	draw(t_map *map, int i, int j)
 {
@@ -45,6 +45,25 @@ void print_rectangl(t_map *conf, int y, int x, int color)
     {
         j = 0;
         while (j < 64)
+        {
+            conf->img_addr[(int)((y + j) ) * 640 + (int)((x + i) )] = color;
+            j++;
+        }
+        i++;
+    }
+}
+void print_rectangl_for_player(t_map *conf, int y, int x, int color)
+{
+    int i;
+    int j;
+
+    x *= 10;
+    y *= 10;
+    i = 0;
+    while (i < 10)
+    {
+        j = 0;
+        while (j < 10)
         {
             conf->img_addr[(int)((y + j) ) * 640 + (int)((x + i) )] = color;
             // conf->img.addr[(( (minimap * y) + (minimap * j)) * conf->player.width + (minimap * x) + (minimap * i))] = color;
@@ -114,8 +133,10 @@ void draw_player1(t_map *map)
 				// my_mlx_pixel_put(map, i  + 10, j + 10 ,0xFFFFFF);
 				// map->px = map->img_h / 2;
 				// map->py = map->img_w / 2;
-				map->px = i;
-				map->py = j;
+				map->px = j * 64;
+				map->py = i * 64;
+				printf("%d %d %d %d\n",map->px ,map->py, i , j);
+				// print_rectangl_for_player(map, i , j , WHITE);
 			}
 			j++;	
 		}
@@ -139,7 +160,6 @@ int    map_to_win(t_map *map)
 			j++;
 		}
 	}
-	printf("%d %d\n", i ,j);
 	return(0);
 }
 
@@ -187,6 +207,7 @@ void    cub3d_game(t_map *map)
 	// mlx_loop_hook(map->mlx, &map_to_win, map);
 	mlx_hook(map->win, 2, 0, &mouvement, map);
 	// mlx_hook(map->win, 3, 0, &handle_keyrelease, map);
+	mlx_put_image_to_window(map->mlx, map->win, map->img_ptr, 0 , 0);
 	// map->img_ptr = mlx_new_image(map->mlx, 1,1 );
 	mlx_loop(map->mlx);
 }

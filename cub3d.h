@@ -6,7 +6,7 @@
 /*   By: amessah <amessah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 22:30:28 by amessah           #+#    #+#             */
-/*   Updated: 2023/04/26 16:06:24 by amessah          ###   ########.fr       */
+/*   Updated: 2023/04/28 10:22:32 by amessah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ int		position_i(char **str);
 void	draw_player(t_map *map);
 void	draw_player1(t_map *map);
 int draw_line(void *mlx, void *win, int beginX, int beginY, int endX, int endY, int color);
+void print_rectangl_for_player(t_map *conf, int y, int x, int color);
+void	my_mlx_pixel_put(t_map *data, int x, int y, int color);
 
 #endif
