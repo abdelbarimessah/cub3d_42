@@ -1,0 +1,18 @@
+NO ./mandatory/parse/assets/north.xpm
+WE ./mandatory/parse/assets/west.xpm
+EA ./mandatory/parse/assets/east.xpm
+SO ./mandatory/parse/assets/south.xpm
+F    41		,   36,   60
+       C 100, 161, 255
+
+1111111111
+1000000001
+1000000001
+1110000001
+   1110000111
+1110010001
+1000101001
+1000010001
+10000N0001
+1000000001
+1111111111
